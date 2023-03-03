@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.ingredint_analyzer_app'
+    namespace 'com.example.ingredient_analyzer_app'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.ingredint_analyzer_app"
+        applicationId "com.example.ingredient_analyzer_app"
         minSdk 29
         targetSdk 33
         versionCode 1

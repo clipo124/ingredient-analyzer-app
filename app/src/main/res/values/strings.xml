@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">ingredint-analyzer-app</string>
+    <string name="app_name">ingredient-analyzer-app</string>
+    <string name="photo_button_description">Take a photo</string>
 </resources>

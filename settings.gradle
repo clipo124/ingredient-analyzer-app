@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "ingredint-analyzer-app"
+rootProject.name = "ingredient-analyzer-app"
 include ':app'
