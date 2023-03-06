@@ -4,19 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:visibility="visible"
     tools:context=".MainActivity">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+    <Button
+        android:id="@+id/cameraButton"
         android:layout_width="59dp"
         android:layout_height="55dp"
         android:clickable="true"
         android:contentDescription="@string/photo_button_description"
+        android:drawableTop="@android:drawable/ic_menu_camera"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.955"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.881"
-        app:srcCompat="@android:drawable/ic_menu_camera" />
+        app:layout_constraintVertical_bias="0.023" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
