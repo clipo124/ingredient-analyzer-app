@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">ingredient-analyzer-app</string>
     <string name="photo_button_description">Take a photo</string>
+    <string name="sample_text">This is sample text.</string>
 </resources>
