@@ -6,11 +6,13 @@
     android:layout_height="wrap_content"
     android:elevation="8dp">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/ingredientCard"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        app:strokeColor="@color/black"
+        app:strokeWidth="0.5dp"
+        app:cardCornerRadius="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,8 +20,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="61dp"
-            android:background="@color/white">
+            android:layout_height="match_parent"
+            android:background="@color/magic_mint">
 
             <TextView
                 android:id="@+id/ingredientName"
@@ -34,5 +36,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
