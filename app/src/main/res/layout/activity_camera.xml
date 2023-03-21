@@ -7,20 +7,14 @@
    android:layout_height="match_parent"
    tools:context=".MainActivity">
 
-   <androidx.camera.view.PreviewView
-       android:id="@+id/viewFinder"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent" >
-
       <androidx.constraintlayout.widget.ConstraintLayout
           android:layout_width="match_parent"
           android:layout_height="match_parent">
-
          <Button
              android:id="@+id/image_capture_button"
              android:layout_width="75dp"
              android:layout_height="75dp"
-             android:elevation="2dp"
+             android:elevation="100dp"
              android:backgroundTint="@color/white"
              app:layout_constraintBottom_toBottomOf="parent"
              app:layout_constraintEnd_toEndOf="parent"
@@ -29,6 +23,11 @@
              app:layout_constraintTop_toTopOf="parent"
              app:layout_constraintVertical_bias="0.913" />
       </androidx.constraintlayout.widget.ConstraintLayout>
+
+   <androidx.camera.view.PreviewView
+       android:id="@+id/viewFinder"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent" >
 
    </androidx.camera.view.PreviewView>
 
