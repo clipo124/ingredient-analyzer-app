@@ -12,7 +12,7 @@ class IngredientRecyclerAdapter(private val ingredientList : ArrayList<Ingredien
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): IngredientRecyclerAdapter.IngredientViewHolder {
+    ): IngredientViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(
             R.layout.ingredient_recycler_item,
             parent,
@@ -22,7 +22,7 @@ class IngredientRecyclerAdapter(private val ingredientList : ArrayList<Ingredien
     }
 
     override fun onBindViewHolder(
-        holder: IngredientRecyclerAdapter.IngredientViewHolder,
+        holder: IngredientViewHolder,
         position: Int
     ) {
         val currentItem: Ingredient = ingredientList[position]
@@ -40,6 +40,7 @@ class IngredientRecyclerAdapter(private val ingredientList : ArrayList<Ingredien
         val ingredientName: TextView = itemView.findViewById(R.id.ingredientName)
 
     }
+
 
 
 }

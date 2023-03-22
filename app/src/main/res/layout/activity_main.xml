@@ -9,12 +9,13 @@
     android:visibility="visible"
     tools:context=".MainActivity">
 
-    <SearchView
+    <androidx.appcompat.widget.SearchView
         android:id="@+id/search_ingredient"
         android:layout_width="0dp"
         android:layout_height="75dp"
         android:background="@color/observatory"
         android:visibility="visible"
+        android:focusable="false"
         app:layout_constraintBottom_toTopOf="@+id/ingredient_recycler"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
