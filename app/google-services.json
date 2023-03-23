@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "798816265484",
+    "firebase_url": "https://kutztown-ingredient-analyzer-default-rtdb.firebaseio.com",
+    "project_id": "kutztown-ingredient-analyzer",
+    "storage_bucket": "kutztown-ingredient-analyzer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:798816265484:android:a57153d8a3f07524ae5529",
+        "android_client_info": {
+          "package_name": "com.kutztown.ingredient_analyzer_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "798816265484-c32u2prumtj4tvj68nbt8r60fsa9qec9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDUvm0wL_9yRv9ir0Q-WARjos6oo61mq4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "798816265484-c32u2prumtj4tvj68nbt8r60fsa9qec9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

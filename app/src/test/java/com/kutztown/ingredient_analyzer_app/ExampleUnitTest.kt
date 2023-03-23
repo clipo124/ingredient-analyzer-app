@@ -1,4 +1,4 @@
-package com.example.ingredient_analyzer_app
+package com.kutztown.ingredient_analyzer_app
 
 import org.junit.Test
 

@@ -1,11 +1,12 @@
-package com.example.ingredient_analyzer_app
+package com.kutztown.ingredient_analyzer_app
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ingredient_analyzer_app.data.Ingredient
+import com.kutztown.ingredient_analyzer_app.R
+import com.kutztown.ingredient_analyzer_app.data.Ingredient
 
 class IngredientRecyclerAdapter(private val ingredientList : ArrayList<Ingredient>) :
     RecyclerView.Adapter<IngredientRecyclerAdapter.IngredientViewHolder>() {
