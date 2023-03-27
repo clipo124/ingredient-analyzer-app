@@ -2,6 +2,7 @@
     <string name="app_name">ingredient-analyzer-app</string>
     <string name="photo_button_description">Take a photo</string>
     <string name="sample_text">Sample Text</string>
+    <string name="tag_text">Vegan</string>
     <string name="take_photo" />
     <string name="start_capture" />
 </resources>
