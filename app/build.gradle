@@ -59,7 +59,7 @@ dependencies {
 
     implementation "androidx.camera:camera-view:${camerax_version}"
     implementation "androidx.camera:camera-extensions:${camerax_version}"
-
+    // https://www.youtube.com/watch?v=fEYhQOUe0g0
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1"
 
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
