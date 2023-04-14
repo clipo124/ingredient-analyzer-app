@@ -2,10 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:fitsSystemWindows="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:backgroundTint="@color/magic_mint"
+    android:fitsSystemWindows="true"
     android:visibility="visible"
     tools:context=".MainActivity">
 
@@ -14,8 +15,8 @@
         android:layout_width="0dp"
         android:layout_height="75dp"
         android:background="@color/observatory"
-        android:visibility="visible"
         android:focusable="false"
+        android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/ingredient_recycler"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -24,32 +25,52 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ingredient_recycler"
-        android:layout_width="413dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/white"
         android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_ingredient" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="0dp"
+        android:layout_height="75dp"
+        android:outlineAmbientShadowColor="#000000"
+        app:backgroundTint="@color/magic_mint"
+        app:compatShadowEnabled="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_ingredient" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/cameraButton"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="40dp"
-        android:background="@drawable/button_round"
-        android:backgroundTint="@color/mosque"
-        android:clickable="true"
-        android:contentDescription="@string/photo_button_description"
-        android:visibility="visible"
-        app:icon="@android:drawable/ic_menu_camera"
-        app:iconGravity="textStart"
-        app:iconPadding="0dp"
-        app:iconSize="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/cameraButton"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:background="@drawable/button_round"
+                android:backgroundTint="@color/mosque"
+                android:clickable="true"
+                android:contentDescription="@string/photo_button_description"
+                android:visibility="visible"
+                app:icon="@android:drawable/ic_menu_camera"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="50dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

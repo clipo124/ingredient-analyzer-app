@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.SearchView.OnQueryTextListener
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -36,7 +37,7 @@ class MainActivity : AppCompatActivity() {
                 assets.open("testImage").copyTo(it)
             }
             viewModel.uploadImage(file)
-           // startActivity(intent)
+           startActivity(intent)
         }
 
         ingredientList = arrayListOf(
@@ -58,7 +59,7 @@ class MainActivity : AppCompatActivity() {
         )
 
 
-        liveIngredientList = arrayListOf<Ingredient>()
+        liveIngredientList = ArrayList()
         liveIngredientList.addAll(ingredientList)
         ingredientRecyclerView = findViewById(R.id.ingredient_recycler)
         ingredientRecyclerView.layoutManager = LinearLayoutManager(this)
@@ -69,12 +70,9 @@ class MainActivity : AppCompatActivity() {
         searchView.setOnQueryTextListener(object : OnQueryTextListener,
             SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(queryText: String?): Boolean {
-                return false
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
                 liveIngredientList.clear()
-                val searchText = newText!!.lowercase()
+                val searchText = queryText!!.lowercase()
+
                 if (searchText.isNotBlank()) {
                     ingredientList.forEach {
                         if (it.name.lowercase().contains(searchText)) {
@@ -82,11 +80,14 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
                     ingredientRecyclerView.adapter!!.notifyDataSetChanged()
-                } else {
-                    liveIngredientList.clear()
-                    liveIngredientList.addAll(ingredientList)
-                    ingredientRecyclerView.adapter!!.notifyDataSetChanged()
+                    return true
                 }
+
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+
                 return false
             }
         })
