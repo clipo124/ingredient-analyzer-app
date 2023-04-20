@@ -28,7 +28,9 @@ class IngredientRecyclerAdapter(private val ingredientList : ArrayList<Ingredien
     ) {
         val currentItem: Ingredient = ingredientList[position]
         holder.ingredientName.text = currentItem.name
-
+        if (!currentItem.isVegan) {
+            holder.isVegan.text = "Not Vegan"
+        }
 
     }
 
@@ -39,6 +41,7 @@ class IngredientRecyclerAdapter(private val ingredientList : ArrayList<Ingredien
     class IngredientViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
 
         val ingredientName: TextView = itemView.findViewById(R.id.ingredientName)
+        val isVegan: TextView = itemView.findViewById(R.id.isVegan)
 
     }
 

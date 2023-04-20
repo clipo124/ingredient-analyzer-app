@@ -31,31 +31,39 @@ class MainActivity : AppCompatActivity() {
         photoButton.setOnClickListener {
             val intent = Intent(this, CameraActivity::class.java)
 
-            val file = File(cacheDir, "testImage")
+            val file = File(cacheDir, "Ingredients-list-example-1.png")
             file.createNewFile()
             file.outputStream().use {
-                assets.open("testImage").copyTo(it)
+                assets.open("Ingredients-list-example-1.png").copyTo(it)
             }
             viewModel.uploadImage(file)
            startActivity(intent)
         }
 
         ingredientList = arrayListOf(
-            Ingredient("Olive Oil"),
-            Ingredient("All Purpose Flour"),
-            Ingredient("Butter"),
-            Ingredient("Chicken"),
-            Ingredient("Sugar"),
-            Ingredient("Salt"),
-            Ingredient("Egg"),
-            Ingredient("Rice"),
-            Ingredient("Vegetable Oil"),
-            Ingredient("Pork"),
-            Ingredient("Beef"),
-            Ingredient("Cheese"),
-            Ingredient("Garlic"),
-            Ingredient("Orange"),
-            Ingredient("Turkey")
+            Ingredient(
+                "Olive Oil",
+                "A pale yellow to yellowish-green nondrying oil that is obtained " +
+                        "from olives, is high in monounsaturated fat, and is used chiefly as a " +
+                        "salad oil and in cooking.",
+                true
+            ),
+            Ingredient("All Purpose Flour",
+                "Flour made from a blend of hard or soft " +
+                        "wheats suitable for all cookery except the finest cakes."
+                , true
+            ),
+            Ingredient(
+                "Butter",
+                "A solid emulsion of fat globules, air, and water made by churning milk" +
+                        " or cream and used as food.",
+                false
+            ),
+            Ingredient(
+                "Chicken",
+                "The common domestic fowl.",
+                false
+            )
         )
 
 

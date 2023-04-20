@@ -24,6 +24,17 @@
             android:background="@color/magic_mint">
 
             <TextView
+                android:id="@+id/isVegan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/vegan_text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.952"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
                 android:id="@+id/ingredientName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
