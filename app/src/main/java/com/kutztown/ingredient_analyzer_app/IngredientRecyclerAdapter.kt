@@ -4,12 +4,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.kutztown.ingredient_analyzer_app.R
 import com.kutztown.ingredient_analyzer_app.data.Ingredient
 
 class IngredientRecyclerAdapter(private val ingredientList : ArrayList<Ingredient>) :
     RecyclerView.Adapter<IngredientRecyclerAdapter.IngredientViewHolder>() {
+    lateinit var currentItem: Ingredient
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -26,10 +28,13 @@ class IngredientRecyclerAdapter(private val ingredientList : ArrayList<Ingredien
         holder: IngredientViewHolder,
         position: Int
     ) {
-        val currentItem: Ingredient = ingredientList[position]
+        var currentItem: Ingredient = ingredientList[position]
         holder.ingredientName.text = currentItem.name
         if (!currentItem.isVegan) {
             holder.isVegan.text = "Not Vegan"
+        }
+        holder.itemView.setOnClickListener {
+            Toast.makeText(holder.itemView.context, currentItem.description, Toast.LENGTH_SHORT).show()
         }
 
     }
