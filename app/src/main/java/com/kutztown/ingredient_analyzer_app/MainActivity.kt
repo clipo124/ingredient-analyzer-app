@@ -2,6 +2,7 @@ package com.kutztown.ingredient_analyzer_app
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.SearchView.OnQueryTextListener
 import androidx.appcompat.app.AppCompatActivity
@@ -69,19 +70,23 @@ class MainActivity : AppCompatActivity() {
         searchView.setOnQueryTextListener(object : OnQueryTextListener,
             SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(queryText: String?): Boolean {
-                liveIngredientList.clear()
-                val searchText = queryText!!.lowercase()
+
+                val searchText: String = queryText!!.lowercase()
 
                 if (searchText.isNotBlank()) {
+                    liveIngredientList.clear()
+                    ingredientRecyclerView.adapter!!.notifyDataSetChanged()
                     ingredientList.forEach {
                         if (it.name.lowercase().contains(searchText)) {
                             liveIngredientList.add(it)
+                            ingredientRecyclerView.adapter!!.notifyDataSetChanged()
                         }
                     }
                     ingredientRecyclerView.adapter!!.notifyDataSetChanged()
+                    Log.d("submit", "Submitted");
                     return true
                 }
-
+                Log.d("submit", "nothing submitted");
                 return false
             }
 
@@ -90,6 +95,19 @@ class MainActivity : AppCompatActivity() {
                 return false
             }
         })
+
+        searchView.setOnCloseListener {
+            Log.d("Close", "Closed")
+            liveIngredientList.clear()
+            ingredientList.forEach {
+                    liveIngredientList.add(it)
+            }
+            ingredientRecyclerView.adapter!!.notifyDataSetChanged()
+            searchView.setQuery("", false)
+            searchView.clearFocus()
+            true
+        }
+
     }
     override fun onResume() {
         super.onResume()

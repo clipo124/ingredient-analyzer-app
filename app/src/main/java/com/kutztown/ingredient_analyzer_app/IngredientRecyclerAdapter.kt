@@ -32,9 +32,9 @@ class IngredientRecyclerAdapter(private val ingredientList : ArrayList<Ingredien
     ) {
         var currentItem: Ingredient = ingredientList[position]
         holder.ingredientName.text = currentItem.name
-        if (!currentItem.isVegan) {
-            holder.isVegan.text = "Not Vegan"
-        }
+        if (currentItem.isVegan) {
+            holder.isVegan.text = "Vegan"
+        } else { holder.isVegan.text = "Not Vegan" }
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, IngredientActivity::class.java)
             intent.putExtra("name", currentItem.name)

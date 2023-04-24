@@ -20,6 +20,7 @@ import androidx.camera.video.Recording
 import androidx.camera.video.VideoCapture
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.net.toFile
 import com.kutztown.ingredient_analyzer_app.databinding.ActivityCameraBinding
 import java.io.ByteArrayOutputStream
 import java.io.File
@@ -118,11 +119,12 @@ class CameraActivity : AppCompatActivity() {
                         onImageSaved(output: ImageCapture.OutputFileResults){
 
                     val fileViewModel = FileViewModel()
-                    val file = File(output.savedUri!!.path)
-                    fileViewModel.uploadImage(file)
+                   // val file =
+                   // fileViewModel.uploadImage(file)
                     val msg = "Photo capture succeeded: ${output.savedUri}"
                     Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
                     Log.d(TAG, msg)
+                    finish()
                 }
             }
         )
