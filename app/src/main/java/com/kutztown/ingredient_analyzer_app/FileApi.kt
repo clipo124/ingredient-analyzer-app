@@ -14,7 +14,7 @@ interface FileApi {
         @Part image: MultipartBody.Part
     )
     companion object {
-        val instance by lazy {
+        val instance: FileApi by lazy {
             Retrofit.Builder()
                 .baseUrl("https://foodingredientanalyzer.online/")
                 .build()

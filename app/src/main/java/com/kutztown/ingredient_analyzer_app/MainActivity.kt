@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.SearchView.OnQueryTextListener
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,18 +25,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        val viewModel = FileViewModel()
         photoButton = binding.cameraButton
         photoButton.setOnClickListener {
             val intent = Intent(this, CameraActivity::class.java)
-
-            val file = File(cacheDir, "Ingredients-list-example-1.png")
-            file.createNewFile()
-            file.outputStream().use {
-                assets.open("Ingredients-list-example-1.png").copyTo(it)
-            }
-            viewModel.uploadImage(file)
-           startActivity(intent)
+            startActivity(intent)
         }
 
         ingredientList = arrayListOf(

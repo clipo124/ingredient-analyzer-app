@@ -1,5 +1,6 @@
 package com.kutztown.ingredient_analyzer_app
 
+
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
