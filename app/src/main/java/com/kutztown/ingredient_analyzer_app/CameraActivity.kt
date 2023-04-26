@@ -3,14 +3,17 @@ package com.kutztown.ingredient_analyzer_app
 import android.Manifest
 import android.content.ContentValues
 import android.content.pm.PackageManager
+import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.media.Image
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.*
@@ -20,7 +23,7 @@ import androidx.camera.video.Recording
 import androidx.camera.video.VideoCapture
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.net.toFile
+import androidx.loader.content.CursorLoader
 import com.kutztown.ingredient_analyzer_app.databinding.ActivityCameraBinding
 import java.io.ByteArrayOutputStream
 import java.io.File
@@ -59,7 +62,7 @@ class CameraActivity : AppCompatActivity() {
         }
 
         // Set up the listeners for take photo and video capture buttons
-        viewBinding.imageCaptureButton.setOnClickListener { takePhoto() }
+        viewBinding.cameraButton.setOnClickListener { takePhoto() }
 
         cameraExecutor = Executors.newSingleThreadExecutor()
     }
@@ -89,24 +92,6 @@ class CameraActivity : AppCompatActivity() {
         // Set up image capture listener, which is triggered after photo has
         // been taken
 
-//      imageCapture.takePicture(ContextCompat.getMainExecutor(this),
-//          @ExperimentalGetImage object : ImageCapture.OnImageCapturedCallback() {
-//              override fun onError(exc: ImageCaptureException) {
-//                  Log.e(TAG, "Photo capture failed: ${exc.message}", exc)
-//              }
-//
-//              override fun onCaptureSuccess(imageProxy: ImageProxy) {
-//                  super.onCaptureSuccess(imageProxy)
-//                  viewModel = FileViewModel()
-//                  var image = toBitmap(imageProxy.image!!)
-//                  var file = bitmapToFile(image!!, "thisisimage.jpg")
-//                  viewModel.uploadImage(file!!)
-//              }
-//
-//          }
-//      )
-
-
         imageCapture.takePicture(
             outputOptions,
             ContextCompat.getMainExecutor(this),
@@ -117,13 +102,21 @@ class CameraActivity : AppCompatActivity() {
 
                 override fun
                         onImageSaved(output: ImageCapture.OutputFileResults){
+                    val progressBar = findViewById<View>(R.id.progressBar)
+                    progressBar.visibility = View.VISIBLE
 
                     val fileViewModel = FileViewModel()
-                   // val file =
-                   // fileViewModel.uploadImage(file)
+                    val file = File(application.cacheDir,"myImage.jpeg")
+                    file.createNewFile()
+                    file.outputStream().use {
+                        application.assets.open("testImage.jpeg").copyTo(it)
+                    }
+                    fileViewModel.uploadImage(file)
+
                     val msg = "Photo capture succeeded: ${output.savedUri}"
                     Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
                     Log.d(TAG, msg)
+                    //progressBar.visibility = View.INVISIBLE
                     finish()
                 }
             }
@@ -167,37 +160,6 @@ class CameraActivity : AppCompatActivity() {
         }, ContextCompat.getMainExecutor(this))
     }
 
-    private fun toBitmap(image: Image): Bitmap? {
-        val buffer = image.planes[0].buffer
-        buffer.rewind()
-        val bytes = ByteArray(buffer.capacity())
-        buffer[bytes]
-        val clonedBytes = bytes.clone()
-        return BitmapFactory.decodeByteArray(clonedBytes, 0, clonedBytes.size)
-    }
-    fun bitmapToFile(bitmap: Bitmap, fileNameToSave: String): File? { // File name like "image.png"
-        //create a file to write bitmap data
-        var file: File? = null
-        return try {
-            file = File(Environment.getExternalStorageDirectory().toString() + File.separator + fileNameToSave)
-            file.createNewFile()
-
-            //Convert bitmap to byte array
-            val bos = ByteArrayOutputStream()
-            bitmap.compress(Bitmap.CompressFormat.PNG, 0, bos) // YOU can also save it in JPEG
-            val bitmapdata = bos.toByteArray()
-
-            //write the bytes in file
-            val fos = FileOutputStream(file)
-            fos.write(bitmapdata)
-            fos.flush()
-            fos.close()
-            file
-        } catch (e: Exception) {
-            e.printStackTrace()
-            file // it will return null
-        }
-    }
 
     override fun onRequestPermissionsResult(
         requestCode: Int, permissions: Array<String>, grantResults:
