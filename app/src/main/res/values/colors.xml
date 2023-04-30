@@ -11,5 +11,8 @@
     <color name="mosque">#035956</color>
     <color name="observatory">#00917C</color>
     <color name="magic_mint">#A5F0C5</color>
+    <color name="pastel_red">#FB6962</color>
+    <color name="pastel_yellow">#FCFC99</color>
+    <color name="pastel_green">#79DE79</color>
 
 </resources>

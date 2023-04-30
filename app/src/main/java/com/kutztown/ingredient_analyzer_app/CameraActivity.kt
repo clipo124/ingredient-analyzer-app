@@ -14,6 +14,7 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
 import android.view.View
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.*
@@ -52,7 +53,6 @@ class CameraActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityCameraBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
-
         // Request camera permissions
         if (allPermissionsGranted()) {
             startCamera()
@@ -100,8 +100,6 @@ class CameraActivity : AppCompatActivity() {
 
                 override fun
                         onImageSaved(output: ImageCapture.OutputFileResults){
-                    val progressBar = findViewById<View>(R.id.progressBar)
-                    progressBar.visibility = View.VISIBLE
 
                     val fileViewModel = FileViewModel()
                     val file = File(application.cacheDir,"myImage.jpeg")
@@ -112,9 +110,8 @@ class CameraActivity : AppCompatActivity() {
                     fileViewModel.uploadImage(file)
 
                     val msg = "Photo capture succeeded: ${output.savedUri}"
-                    Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+                   // Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
                     Log.d(TAG, msg)
-                    //progressBar.visibility = View.INVISIBLE
                     setResult(RESULT_OK, intent)
                     finish()
                 }

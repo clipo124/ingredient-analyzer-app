@@ -1,13 +1,16 @@
 package com.kutztown.ingredient_analyzer_app
 
 import android.content.Intent
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.compose.ui.res.colorResource
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.card.MaterialCardView
 import com.kutztown.ingredient_analyzer_app.R
 import com.kutztown.ingredient_analyzer_app.data.Ingredient
 
@@ -34,7 +37,12 @@ class IngredientRecyclerAdapter(private val ingredientList : ArrayList<Ingredien
         holder.ingredientName.text = currentItem.name
         if (currentItem.isVegan) {
             holder.isVegan.text = "Vegan"
-        } else { holder.isVegan.text = "Not Vegan" }
+            holder.card.setCardBackgroundColor(Color.parseColor("#A5F0C5"))
+
+        } else {
+            holder.isVegan.text = "Not Vegan"
+            holder.card.setCardBackgroundColor(Color.parseColor("#FB6962"))
+        }
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, IngredientActivity::class.java)
             intent.putExtra("name", currentItem.name)
@@ -53,6 +61,7 @@ class IngredientRecyclerAdapter(private val ingredientList : ArrayList<Ingredien
 
         val ingredientName: TextView = itemView.findViewById(R.id.ingredientName)
         val isVegan: TextView = itemView.findViewById(R.id.isVegan)
+        val card: MaterialCardView = itemView.findViewById(R.id.ingredientCard)
 
     }
 
