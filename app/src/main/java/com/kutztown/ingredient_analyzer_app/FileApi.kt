@@ -12,7 +12,7 @@ import retrofit2.http.Part
 
 interface FileApi {
 
-    @POST("upload.php")
+    @POST("/")
     @Multipart
     suspend fun uploadImage(
         @Part image: MultipartBody.Part
@@ -27,7 +27,7 @@ interface FileApi {
                 .build()
 
             Retrofit.Builder()
-                .baseUrl("https://foodingredientanalyzer.online/")
+                .baseUrl("http://10.0.2.2:5000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()

@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.SearchView.OnQueryTextListener
+import android.widget.SearchView.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         photoButton = binding.cameraButton
         photoButton.setOnClickListener {
             val intent = Intent(this, CameraActivity::class.java)
-            startActivity(intent)
+            startActivityForResult(intent, 0)
         }
 
         ingredientList = arrayListOf(
@@ -65,6 +65,7 @@ class MainActivity : AppCompatActivity() {
         ingredientRecyclerView.layoutManager = LinearLayoutManager(this)
         ingredientRecyclerView.setHasFixedSize(false)
         ingredientRecyclerView.adapter = IngredientRecyclerAdapter(liveIngredientList)
+        ingredientRecyclerView.visibility = INVISIBLE
 
         searchView = findViewById(R.id.search_ingredient)
         searchView.setOnQueryTextListener(object : OnQueryTextListener,
@@ -113,6 +114,18 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         searchView.setQuery("", false)
         binding.root.requestFocus()
+    }
+
+    // this called after child activity finishes.
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == 0) {
+            if (resultCode == RESULT_OK) {
+                // Get the result from intent
+                ingredientRecyclerView.visibility = VISIBLE
+            }
+        }
     }
 
 

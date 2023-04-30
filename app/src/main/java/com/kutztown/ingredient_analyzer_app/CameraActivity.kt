@@ -77,9 +77,7 @@ class CameraActivity : AppCompatActivity() {
         val contentValues = ContentValues().apply {
             put(MediaStore.MediaColumns.DISPLAY_NAME, name)
             put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg")
-            if(Build.VERSION.SDK_INT > Build.VERSION_CODES.P) {
-                put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/CameraX-Image")
-            }
+            put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/CameraX-Image")
         }
 
         // Create output options object which contains file + metadata
@@ -117,6 +115,7 @@ class CameraActivity : AppCompatActivity() {
                     Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
                     Log.d(TAG, msg)
                     //progressBar.visibility = View.INVISIBLE
+                    setResult(RESULT_OK, intent)
                     finish()
                 }
             }
@@ -195,9 +194,6 @@ class CameraActivity : AppCompatActivity() {
             mutableListOf (
                 Manifest.permission.CAMERA
             ).apply {
-                if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
-                    add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                }
             }.toTypedArray()
     }
 }
