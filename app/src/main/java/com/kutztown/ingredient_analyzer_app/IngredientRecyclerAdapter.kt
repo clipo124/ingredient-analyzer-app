@@ -35,13 +35,20 @@ class IngredientRecyclerAdapter(private val ingredientList : ArrayList<Ingredien
     ) {
         var currentItem: Ingredient = ingredientList[position]
         holder.ingredientName.text = currentItem.name
-        if (currentItem.isVegan) {
-            holder.isVegan.text = "Vegan"
-            holder.card.setCardBackgroundColor(Color.parseColor("#A5F0C5"))
+        when (currentItem.isVegan) {
+            true -> {
+                holder.isVegan.text = "Vegan"
+                holder.card.setCardBackgroundColor(Color.parseColor("#A5F0C5"))
 
-        } else {
-            holder.isVegan.text = "Not Vegan"
-            holder.card.setCardBackgroundColor(Color.parseColor("#FB6962"))
+            }
+            false -> {
+                holder.isVegan.text = "Not Vegan"
+                holder.card.setCardBackgroundColor(Color.parseColor("#FB6962"))
+            }
+            null -> {
+                holder.isVegan.text = "Maybe Vegan"
+                holder.card.setCardBackgroundColor(Color.parseColor("#FCFC99"))
+            }
         }
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, IngredientActivity::class.java)

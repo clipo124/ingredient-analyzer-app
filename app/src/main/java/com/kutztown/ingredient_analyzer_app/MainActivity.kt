@@ -37,59 +37,54 @@ class MainActivity : AppCompatActivity() {
         ingredientList = arrayListOf<Ingredient>(
             Ingredient(
                 "Sugar",
-                "",
+                "A sweet crystallizable material that consists wholly or essentially of sucrose, is colorless or white when pure tending to brown when less refined, is obtained commercially from sugarcane or sugar beet and less extensively from sorghum, maples, and palms, and is important as a source of dietary carbohydrate and as a sweetener and preservative of other foods.",
                 true
             ),
             Ingredient("Enriched Bleached Flour",
-                ""
+                "Enriched flour is flour with specific nutrients returned to it that have been lost while being prepared. These restored nutrients include iron and B vitamins (folic acid, riboflavin, niacin, and thiamine)."
                 , true
             ),
             Ingredient(
                 "Canola Oil",
-                "",
+                "An edible vegetable oil obtained from the seeds of canola that is high in monounsaturated fatty acids.",
                 true
             ),
             Ingredient(
                 "Soybean Oil",
-                "",
+                "A pale yellow drying or semidrying oil that is obtained from soybeans and is used chiefly as a food, in paints, varnishes, linoleum, printing ink, and soap, and as a source of phospholipids, fatty acids, and sterols.",
                 true
             ),
             Ingredient(
                 "Salt",
-                "",
+                "A crystalline compound NaCl that consists of sodium chloride, is abundant in nature, and is used especially to season or preserve food or in industry.",
                 true
             ),
             Ingredient("Artificial Flavor",
-                ""
+                "An artificial flavor is any non-natural substance that is used to create flavors in foods, beverages, or medications."
                 , true
             ),
             Ingredient(
                 "Sodium Bicarbonate",
-                "",
+                "A white crystalline weakly alkaline salt NaHCO3 used especially in baking powders and fire extinguishers and in medicine as an antacid.",
                 true
             ),
             Ingredient(
                 "Cocoa",
-                "",
-                true
-            ),
-            Ingredient(
-                "Sugar",
-                "",
+                "Powdered ground roasted cacao beans from which a portion of the fat has been removed.",
                 true
             ),
             Ingredient("Semi-Sweet Chocolate Chips",
-                ""
-                , false
+                "Semi-Sweet Chocolate Chips are a form of dark chocolate that may contain milk."
+                , null
             ),
             Ingredient(
                 "Bittersweet Chocolate Chips",
-                "",
-                false
+                "Bittersweet Chocolate Chips may contain milk fat.",
+                null
             ),
             Ingredient(
                 "Milk Chocolate Chips",
-                "",
+                "Milk chocolate is a form of solid chocolate containing cocoa, sugar and milk.",
                 false
             ),
         )
