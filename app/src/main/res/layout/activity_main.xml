@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:backgroundTint="@color/magic_mint"
+    android:backgroundTint="@color/white"
     android:fitsSystemWindows="true"
     android:visibility="visible"
     tools:context=".MainActivity">
@@ -17,11 +17,12 @@
         android:background="@color/observatory"
         android:focusable="false"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/ingredient_recycler"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ingredient_recycler"

@@ -34,35 +34,69 @@ class MainActivity : AppCompatActivity() {
             startActivityForResult(intent, 0)
         }
 
-        ingredientList = arrayListOf(
+        ingredientList = arrayListOf<Ingredient>(
             Ingredient(
-                "Olive Oil",
-                "A pale yellow to yellowish-green nondrying oil that is obtained " +
-                        "from olives, is high in monounsaturated fat, and is used chiefly as a " +
-                        "salad oil and in cooking.",
+                "Sugar",
+                "",
                 true
             ),
-            Ingredient("All Purpose Flour",
-                "Flour made from a blend of hard or soft " +
-                        "wheats suitable for all cookery except the finest cakes."
+            Ingredient("Enriched Bleached Flour",
+                ""
                 , true
             ),
             Ingredient(
-                "Butter",
-                "A solid emulsion of fat globules, air, and water made by churning milk" +
-                        " or cream and used as food.",
+                "Canola Oil",
+                "",
+                true
+            ),
+            Ingredient(
+                "Soybean Oil",
+                "",
+                true
+            ),
+            Ingredient(
+                "Salt",
+                "",
+                true
+            ),
+            Ingredient("Artificial Flavor",
+                ""
+                , true
+            ),
+            Ingredient(
+                "Sodium Bicarbonate",
+                "",
+                true
+            ),
+            Ingredient(
+                "Cocoa",
+                "",
+                true
+            ),
+            Ingredient(
+                "Sugar",
+                "",
+                true
+            ),
+            Ingredient("Semi-Sweet Chocolate Chips",
+                ""
+                , false
+            ),
+            Ingredient(
+                "Bittersweet Chocolate Chips",
+                "",
                 false
             ),
             Ingredient(
-                "Chicken",
-                "The common domestic fowl.",
+                "Milk Chocolate Chips",
+                "",
                 false
-            )
+            ),
         )
 
-
+        val sortedList = ingredientList.sortedWith(compareBy { it.name })
         liveIngredientList = ArrayList()
-        liveIngredientList.addAll(ingredientList)
+        liveIngredientList.addAll(sortedList)
         ingredientRecyclerView = findViewById(R.id.ingredient_recycler)
         ingredientRecyclerView.layoutManager = LinearLayoutManager(this)
         ingredientRecyclerView.setHasFixedSize(false)
@@ -102,7 +136,7 @@ class MainActivity : AppCompatActivity() {
         searchView.setOnCloseListener {
             Log.d("Close", "Closed")
             liveIngredientList.clear()
-            ingredientList.forEach {
+            sortedList.forEach {
                     liveIngredientList.add(it)
             }
             ingredientRecyclerView.adapter!!.notifyDataSetChanged()
